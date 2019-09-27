@@ -1,0 +1,31 @@
+
+mat-toolbar {
+    display: flex;
+    justify-content: center;
+}
+
+/* example-full-width {
+    
+} */
+
+example-form {
+    min-width: 450px; 
+    max-width: 500px; 
+    width: 200px;
+    margin-left: 20px;
+    margin-top: 20px;
+} 
+
+/* ::ng-deep .mat-autocomplete-panel.example-long-panel { 
+    max-height: 500px;
+} */
+
+input.mat-input-element {
+    height: 22px;
+}
+
+ /* .mat-icon {
+    float: right;
+    margin-bottom: 23px;
+    margin-right: 3px;
+} */

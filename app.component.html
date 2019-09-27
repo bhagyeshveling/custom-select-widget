@@ -1,0 +1,9 @@
+
+<form [formGroup]="form">
+  <my-select [ctrl]="form.get('phones')"> 
+  </my-select>                                 <!-- form.get('phones') -->
+</form>
+
+<!-- <p> {{ form.value | json }} </p> -->
+
+<router-outlet></router-outlet>
