@@ -15,12 +15,12 @@ import { map, startWith } from 'rxjs/operators';
         <mat-label> Top Best Selling Phones </mat-label>
         <input matInput type="search" placeholder="search here" [formControl]="ctrl"
           [matAutocomplete]="auto" #itemName>
-          <button matSuffix mat-icon-button color="primary" (click)="addItem(itemName.value)">
+          <button *ngIf="show" matSuffix mat-icon-button color="primary" (click)="addItem(itemName.value);">
               <mat-icon>add_circle</mat-icon>
           </button>
         <mat-autocomplete #auto="matAutocomplete" class="example-full-width" 
           panelClass="example-long-panel">
-            <mat-option *ngFor="let option of Phones | async">
+            <mat-option *ngFor="let option of Phones | async" [value]="option">
               {{option}}
             </mat-option>
         </mat-autocomplete> 
@@ -50,8 +50,16 @@ import { map, startWith } from 'rxjs/operators';
     
       private _filter(value: string): string[] {
         const filterValue = value.toLowerCase();
-        return this.phones.filter(option => option.toLowerCase().includes(filterValue));
-         
+          const filteredArray = this.phones.filter(option => option.toLowerCase().includes(filterValue));
+           if(filteredArray.length == 0 )
+           {
+              this.toggle();  
+           } 
+           else 
+           {
+              this.show = false;
+           }
+        return filteredArray;
       }    
 
       addItem(newPhones) {
@@ -60,4 +68,8 @@ import { map, startWith } from 'rxjs/operators';
          //return this.phones;
       } 
   
+      toggle() {
+        this.show = true;  
+      }
+      
   }
